@@ -5,6 +5,7 @@ module.exports = {
     return this.api.launchUrl;
   },
   elements: {
+    // Basic CSS Variables
     landingGenderSelection: ".homepage-popup",
     landingGenderFemale: ".homepage-popup .gender-button[data-gender-id='1']",
     landingGenderMale: ".homepage-popup .gender-button[data-gender-id='2']",

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 const driversPath = {
-    selenium: require('selenium-server').path, // imported @vue/cli-plugin-e2e-nightwatch
-    chrome: require('chromedriver').path, // imported @vue/cli-plugin-e2e-nightwatch
-    firefox: require('geckodriver').path, // imported geckodriver
+    selenium: require('selenium-server').path,
+    chrome: require('chromedriver').path,
+    firefox: require('geckodriver').path,
 };
 
 module.exports = {

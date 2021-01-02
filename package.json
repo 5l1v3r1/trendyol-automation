@@ -2,11 +2,10 @@
   "name": "trendyol-assignment",
   "version": "1.0.0",
   "description": "trendyol-job-application",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "test": "nightwatch",
     "test-firefox": "nightwatch --env firefox",
-    "test-edge": "nightwatch --env edge",
     "test-chrome": "nightwatch --env chrome"
   },
   "keywords": [
