@@ -7,7 +7,7 @@ const driversPath = {
 };
 
 module.exports = {
-    src_folders: ['tests/'],
+    src_folders: ['src/tests'],
     output_folder: 'outputs',
     page_objects_path: ['src/page-objects'],
     globals_path: 'src/global.js',
@@ -73,7 +73,7 @@ module.exports = {
                 marionette: true,
                 nativeEvents: true,
                 'moz:firefoxOptions': {
-                    args: ['--headless', '--no-sandbox'],
+                    args: ['', '--no-sandbox'],
                 },
             },
         },
