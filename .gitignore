@@ -1,1 +1,4 @@
 /outpus
+/node_modules
+/.idea
+/.env

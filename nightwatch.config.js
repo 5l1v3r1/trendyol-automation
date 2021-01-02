@@ -10,7 +10,7 @@ module.exports = {
     src_folders: ['tests/'],
     output_folder: 'outputs',
     page_objects_path: ['src/page-objects'],
-    globals_path: 'src/tests/global.js',
+    globals_path: 'src/global.js',
 
     selenium: {
         start_process: true,

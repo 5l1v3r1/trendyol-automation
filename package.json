@@ -7,11 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "npx prettier --write"
   },
-  "keywords": ["Trendyol", "Assignment"],
+  "keywords": [
+    "Trendyol",
+    "Assignment"
+  ],
   "author": "Mustafa Hakan Catana",
   "license": "ISC",
   "dependencies": {
     "chromedriver": "^87.0.4",
+    "dotenv": "^8.2.0",
     "geckodriver": "^1.21.1",
     "nightwatch": "1.5.1",
     "selenium-server": "^3.141.59"
