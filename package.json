@@ -1,0 +1,22 @@
+{
+  "name": "trendyol-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "npx prettier --write"
+  },
+  "keywords": ["Trendyol", "Assignment"],
+  "author": "Mustafa Hakan Catana",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^87.0.4",
+    "geckodriver": "^1.21.1",
+    "nightwatch": "1.5.1",
+    "selenium-server": "^3.141.59"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}
