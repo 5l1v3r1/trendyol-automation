@@ -7,4 +7,5 @@ module.exports = {
     prodUrl: prodUrl,
     userMail: userMail,
     userPassword: userPassword,
+    asyncHookTimeout: 20000,
 };

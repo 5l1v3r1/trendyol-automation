@@ -7,8 +7,7 @@
     "test": "nightwatch",
     "test-firefox": "nightwatch --env firefox",
     "test-edge": "nightwatch --env edge",
-    "test-chrome": "nightwatch --env chrome",
-    "prettier": "npx prettier --write"
+    "test-chrome": "nightwatch --env chrome"
   },
   "keywords": [
     "Trendyol",
@@ -22,8 +21,5 @@
     "geckodriver": "^1.21.1",
     "nightwatch": "1.5.1",
     "selenium-server": "^3.141.59"
-  },
-  "devDependencies": {
-    "prettier": "2.2.1"
   }
 }
