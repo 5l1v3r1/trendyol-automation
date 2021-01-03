@@ -4,13 +4,15 @@
   "description": "trendyol-job-application",
   "main": "",
   "scripts": {
-    "test": "nightwatch",
-    "test-firefox": "nightwatch --env firefox",
-    "test-chrome": "nightwatch --env chrome"
+    "test-chrome": "nightwatch -e chrome",
+    "test-firefox": "nightwatch -e firefox",
+    "test": "nightwatch -e chrome,firefox",
+    "update": "npx npm-check-updates -u && npm install"
   },
   "keywords": [
     "Trendyol",
-    "Assignment"
+    "Assignment",
+    "UI Automation"
   ],
   "author": "Mustafa Hakan Catana",
   "license": "ISC",
