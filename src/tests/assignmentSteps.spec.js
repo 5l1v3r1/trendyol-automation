@@ -12,7 +12,7 @@ module.exports = {
         performDone();
       });
   },
-  // Logining with registered account and assert this account
+  // Logging with registered account and assert this account.
   // This registered account has some pre-requirements to run this spec successfully.
   // Please check ReadMe file for those pre-requirements.
   "Trendyol Assignment Step 1"() {
