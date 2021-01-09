@@ -9,6 +9,8 @@ module.exports = {
     // Base CSS Variables
     genderSelectionPopUp: ".homepage-popup",
     genderSelectionPopUpCloseButton: ".fancybox-close",
+    discountReminderPopUp: ".notification-popup-container",
+    discountReminderPopUpCloseButton: ".modal-close",
     accountIcon: ".account-user",
     basketIcon: ".account-basket",
     loggedAccountDd: ".user-loggedin-container",
@@ -39,6 +41,13 @@ module.exports = {
         return this.waitForElementVisible("@genderSelectionPopUp", 1000)
           .click("@genderSelectionPopUpCloseButton")
           .waitForElementNotVisible("@genderSelectionPopUp", 1000);
+      },
+      handleDiscountReminderPopUp: function () {
+        return this.isVisible("@discountReminderPopUp", (result) => {
+          if (result.value) {
+            this.click("@discountReminderPopUpCloseButton");
+          }
+        });
       },
       clickAccountIcon: function () {
         return this.click("@accountIcon", 1000);

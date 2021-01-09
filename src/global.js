@@ -4,7 +4,7 @@ module.exports = {
   preDefinedData: {
     existingTestAccounts: [
       {
-        userName: "hakan-trendyol-1@yandex.com",
+        userName: "hakan-trendyol-2@yandex.com",
         password: "ankara9086",
       },
     ],

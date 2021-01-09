@@ -26,6 +26,7 @@ module.exports = {
       .setUserPassword(this.userPassword)
       .clickLoginButton()
       .api.page.landingPage()
+      .handleDiscountReminderPopUp()
       .moveCursorToAccountIcon()
       .checkLoggedAccountDdElements()
       .getText("@loggedAccountDdUserName", function (result) {
@@ -45,7 +46,7 @@ module.exports = {
     boutiqueSelection.section.boutiquePages.clickFirstBoutique();
   },
   "Adding a product to the basket"() {
-       this.currentPage.client.api.page
+    this.currentPage.client.api.page
       .landingPage()
       .section.productListingPage.checkPreLoadedBoutiqueProducts()
       .clickPreLoadedFirstProduct()
