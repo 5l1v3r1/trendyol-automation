@@ -1,4 +1,4 @@
 /outputs
 /node_modules
 /.idea
-/.env
+/.gitignore
