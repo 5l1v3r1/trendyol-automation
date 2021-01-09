@@ -1,50 +1,60 @@
 module.exports = {
   tags: ["Trendyol UI Automation Assignment"],
   before: function (client, done) {
-    this.userMail = client.globals.userMail;
-    this.userPassword = client.globals.userPassword;
+    this.userMail =
+      client.globals.preDefinedData.existingTestAccounts[0].userName;
+    this.userPassword =
+      client.globals.preDefinedData.existingTestAccounts[0].password;
     this.currentPage = client.maximizeWindow().page.landingPage();
     this.currentPage
-      .navigate(client.globals.prodUrl)
+      .navigate(client.globals.appUrl)
       .waitForElementVisible("body", 60000)
       .perform((performDone) => {
         done();
         performDone();
       });
   },
-  // Logging with registered account and assert this account.
-  // This registered account has some pre-requirements to run this spec successfully.
-  // Please check ReadMe file for those pre-requirements.
-  "Trendyol Assignment Step 1"() {
+  "Logging with registered account"() {
+    const that = this;
+
     this.currentPage
       .checkInitialElements()
-      .closeGenderSelection()
-      .checkGenderPopUpClosed()
+      .handleGenderSelectionPopup()
       .clickAccountIcon()
       .section.loginPage.checkInitialElements()
       .setUserEmail(this.userMail)
       .setUserPassword(this.userPassword)
       .clickLoginButton()
       .api.page.landingPage()
-      .waitForDiscountPopUp()
-      .checkDiscountPopUp()
-      .clickDiscountCloseButton()
-      .checkDiscountPopUpClosed()
       .moveCursorToAccountIcon()
       .checkLoggedAccountDdElements()
-      .assert.containsText(
-        "@loggedAccountDdUserName",
-        this.userMail.charAt(0).toUpperCase() + this.userMail.slice(1)
-      );
+      .getText("@loggedAccountDdUserName", function (result) {
+        this.assert.equal(result.value.toLowerCase(), that.userMail);
+      });
   },
-  // Navigating each boutique menu and checking all images are loaded or not
-  "Trendyol Assignment Step 2"() {
-    this.currentPage.client.api.page
+  "Navigating each menu under navigation bar"() {
+    let boutiqueSelection = this.currentPage.client.api.page
       .landingPage()
-      .checkBoutiqueNavInitialElements()
-      .clickSpecificBoutiqueMenu("1")
-      .section.boutiquePages.checkInitialElements()
-      .assert.imageLoaded(".component-big-list a span img");
+      .checkBoutiqueNavInitialElements();
+    for (let i = 1; i < 10; i++) {
+      boutiqueSelection = boutiqueSelection
+        .clickSpecificBoutiqueMenu(i.toString())
+        .section.boutiquePages.checkPreLoadedBoutiques()
+        .api.page.landingPage();
+    }
+    boutiqueSelection.section.boutiquePages.clickFirstBoutique();
+  },
+  "Adding a product to the basket"() {
+       this.currentPage.client.api.page
+      .landingPage()
+      .section.productListingPage.checkPreLoadedBoutiqueProducts()
+      .clickPreLoadedFirstProduct()
+      .parent.section.productDetailPage.checkProductDetailElements()
+      .clickAddToBasketButton()
+      .api.page.landingPage()
+      .clickBasketIcon()
+      .section.basketPage.checkBasketPageContainer()
+      .removeAddedProduct();
   },
   after: function (client, done) {
     client.end().perform(done);

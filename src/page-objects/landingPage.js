@@ -1,24 +1,20 @@
 const loginPage = require("../sections/loginPage");
 const boutiquePages = require("../sections/boutiquePages");
+const productListingPage = require("../sections/productListingPage");
+const productDetailPage = require("../sections/productDetailPage");
+const basketPage = require("../sections/basketPage");
 
 module.exports = {
-  url: function () {
-    return this.api.launchUrl;
-  },
   elements: {
-    // Welcome-Discount Popups and Account Menu CSS Variables
-    landingGenderSelection: ".homepage-popup",
-    landingGenderFemale: ".homepage-popup .gender-button[data-gender-id='1']",
-    landingGenderMale: ".homepage-popup .gender-button[data-gender-id='2']",
-    landingGenderCloseButton: ".fancybox-close",
+    // Base CSS Variables
+    genderSelectionPopUp: ".homepage-popup",
+    genderSelectionPopUpCloseButton: ".fancybox-close",
     accountIcon: ".account-user",
-    genderModuleBackground: ".fancybox-overlay",
-    discountPopUp: ".notification-popup-container",
-    discountPopUpCloseButton: ".modal-close",
+    basketIcon: ".account-basket",
     loggedAccountDd: ".user-loggedin-container",
     loggedAccountDdUserName: ".user-name",
 
-    // Boutique Navigation CSS Variables
+    // Menu Navigation CSS Variables
     boutiqueNavBar: "#browsing-gw-navigation",
     firstBoutiqueMenu: "#browsing-gw-navigation .main-nav > li:nth-child(1)",
     secondBoutiqueMenu: "#browsing-gw-navigation .main-nav > li:nth-child(2)",
@@ -33,37 +29,25 @@ module.exports = {
 
   commands: [
     {
-      // Login Steps Functions
       checkInitialElements: function () {
-        return this.waitForElementVisible("@landingGenderSelection", 1000)
-          .waitForElementVisible("@landingGenderFemale", 1000)
-          .waitForElementVisible("@landingGenderMale", 1000)
-          .waitForElementVisible("@landingGenderCloseButton", 1000)
-          .waitForElementVisible("@accountIcon", 1000);
+        return this.waitForElementVisible(
+          "@accountIcon",
+          1000
+        ).waitForElementVisible("@basketIcon", 1000);
       },
-      closeGenderSelection: function () {
-        return this.click("@landingGenderCloseButton");
+      handleGenderSelectionPopup: function () {
+        return this.waitForElementVisible("@genderSelectionPopUp", 1000)
+          .click("@genderSelectionPopUpCloseButton")
+          .waitForElementNotVisible("@genderSelectionPopUp", 1000);
       },
       clickAccountIcon: function () {
         return this.click("@accountIcon", 1000);
       },
-      checkGenderPopUpClosed: function () {
-        return this.waitForElementNotPresent("@genderModuleBackground", 1000);
-      },
-      waitForDiscountPopUp: function () {
-        return this.pause(2000);
-      },
-      checkDiscountPopUp: function () {
-        return this.waitForElementVisible("@discountPopUp", 1000);
-      },
-      clickDiscountCloseButton: function () {
-        return this.click("@discountPopUpCloseButton");
-      },
-      checkDiscountPopUpClosed: function () {
-        return this.waitForElementNotPresent("@discountPopUp", 1000);
+      clickBasketIcon: function () {
+        return this.click("@basketIcon");
       },
       moveCursorToAccountIcon: function () {
-        return this.moveToElement("@accountIcon", 0, 0).pause(2000);
+        return this.moveToElement("@accountIcon", 0, 0).pause(1000);
       },
       checkLoggedAccountDdElements: function () {
         return this.waitForElementVisible(
@@ -85,8 +69,8 @@ module.exports = {
           .waitForElementVisible("@eighthBoutiqueMenu", 1000)
           .waitForElementVisible("@ninthBoutiqueMenu", 1000);
       },
-      clickSpecificBoutiqueMenu: function (boutiqueNumber) {
-        switch (boutiqueNumber) {
+      clickSpecificBoutiqueMenu: function (menuNumber) {
+        switch (menuNumber) {
           case "1":
             return this.click("@firstBoutiqueMenu");
           case "2":
@@ -113,5 +97,8 @@ module.exports = {
   sections: {
     loginPage: loginPage,
     boutiquePages: boutiquePages,
+    productListingPage: productListingPage,
+    productDetailPage: productDetailPage,
+    basketPage: basketPage,
   },
 };

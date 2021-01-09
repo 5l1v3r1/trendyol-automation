@@ -1,10 +1,12 @@
-require('dotenv').config();
-const prodUrl = process.env.TRENDYOL_URL;
-const userMail = process.env.USER_MAIL;
-const userPassword = process.env.USER_PASSWORD;
-
 module.exports = {
-    prodUrl: prodUrl,
-    userMail: userMail,
-    userPassword: userPassword,
+  asyncHookTimeout: 30000,
+  appUrl: "https://www.trendyol.com/",
+  preDefinedData: {
+    existingTestAccounts: [
+      {
+        userName: "hakan-trendyol-1@yandex.com",
+        password: "ankara9086",
+      },
+    ],
+  },
 };

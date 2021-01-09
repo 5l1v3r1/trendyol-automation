@@ -8,7 +8,6 @@ module.exports = {
   src_folders: ["src/tests"],
   output_folder: "outputs",
   page_objects_path: ["src/page-objects"],
-  custom_assertions_path: ["src/assertions"],
   globals_path: "src/global.js",
 
   selenium: {
@@ -17,7 +16,7 @@ module.exports = {
     host: "127.0.0.1",
     port: 4444,
     start_session: true,
-    log_path: "",
+    log_path: "outputs",
     cli_args: {
       "webdriver.chrome.driver": driversPath.chrome,
       "webdriver.gecko.driver": driversPath.firefox,
@@ -39,15 +38,34 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true,
         nativeEvents: true,
+        chromeOptions: {
+          args: [
+            "--no-sandbox",
+            "--disable-web-security",
+            "--ignore-certificate-errors",
+            "--disable-notifications",
+            "--disable-extensions",
+          ],
+        },
       },
     },
     firefox: {
+      "dom.webnotifications.enabled": false,
       desiredCapabilities: {
         browserName: "firefox",
         javascriptEnabled: true,
         acceptSslCerts: true,
         marionette: true,
         nativeEvents: true,
+        "moz:firefoxOptions": {
+          args: [
+            "--no-sandbox",
+            "--disable-web-security",
+            "--ignore-certificate-errors",
+            "--disable-notifications",
+            "--disable-extensions",
+          ],
+        },
       },
     },
   },

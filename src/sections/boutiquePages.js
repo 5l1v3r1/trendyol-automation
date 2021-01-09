@@ -2,16 +2,22 @@ module.exports = {
   selector: "#browsing-gw-homepage",
   locateStrategy: "css selector",
   elements: {
-    boutiqueSlider: ".circled-slider",
-    boutiqueComponents: ".component-list",
+    // Pre-Loaded Boutique CSS Variables
+    preLoadedBoutiqueContainer: ".sticky-wrapper",
+    preLoadedFirstBoutique: ".component-list > article:nth-child(1)",
+    preLoadedSecondBoutique: ".component-list > article:nth-child(2)",
+    preLoadedThirdBoutique: ".component-list > article:nth-child(3)",
   },
   commands: [
     {
-      checkInitialElements: function () {
-        return this.waitForElementVisible(
-          "@boutiqueSlider",
-          1000
-        ).waitForElementVisible("@boutiqueComponents", 1000);
+      checkPreLoadedBoutiques: function () {
+        return this.waitForElementVisible("@preLoadedBoutiqueContainer", 1000)
+          .waitForElementVisible("@preLoadedFirstBoutique", 1000)
+          .waitForElementVisible("@preLoadedSecondBoutique", 1000)
+          .waitForElementVisible("@preLoadedThirdBoutique", 1000);
+      },
+      clickFirstBoutique: function () {
+        return this.click("@preLoadedFirstBoutique");
       },
     },
   ],
