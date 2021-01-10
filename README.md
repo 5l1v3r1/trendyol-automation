@@ -8,14 +8,15 @@ This project is UI automated test for "https://www.trendyol.com/" with specific 
 
 ### How to Run
 1. Please run following command: `npm install`
-2. To run on both Firefox and Chrome, please run following command: `npm run test`
-3. To run only on Firefox, please run following command: `npm run test-firefox`
-4. To run only on Chrome, please run following command: `npm run test-chrome`
+2. To run only on Firefox, please run following command: `npm run test-firefox`
+3. To run only on Chrome, please run following command: `npm run test-chrome`
+
+**Note:** There is cursor movement action to assert logged user in test scenario that's why cursor should not be moved during run not to get failure 
 
 ### Test Scenario
 
 1. Should be logged in with registered account
-2. After logging, all menu tabs should be navigated and checked boutique images are loaded or not
-3. Navigate to any boutique and check product images are loaded or not
+2. After logging, all menu tabs should be navigated
+3. Navigate to any boutique
 4. Navigate to any product detail
 5. Add the product to the basket

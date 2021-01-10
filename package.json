@@ -5,8 +5,7 @@
   "main": "",
   "scripts": {
     "test-chrome": "nightwatch -e chrome",
-    "test-firefox": "nightwatch -e firefox",
-    "test": "nightwatch -e chrome,firefox"
+    "test-firefox": "nightwatch -e firefox"
   },
   "keywords": [
     "Trendyol",
